@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "471645389466",
+    "project_id": "movie-directory-88006",
+    "storage_bucket": "movie-directory-88006.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471645389466:android:85c0e9b75bf41d6f169523",
+        "android_client_info": {
+          "package_name": "com.lptask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471645389466-gacbn4qp57n418u2cv79up1fvpgeovuc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lptask",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "471645389466-vcd427g0iqlqncdi5420fa3aanlqpaqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxzDhEEQML-UtbFNrTfY6md6BAbwtxRvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471645389466-vcd427g0iqlqncdi5420fa3aanlqpaqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
