@@ -132,14 +132,14 @@ export default function MovieHome(){
               headerStyle: { backgroundColor: 'black',},
              }}
           />
-          <Tab.Screen
+          {/* <Tab.Screen
             name="MovieInfo" component={MovieInfo}
                     options={{
                       title:"",
                       // headerShown:false,   //will hide the header for that particular screen
                       
                     }}
-            />
+            /> */}
         </Tab.Navigator>
              </>
     );
