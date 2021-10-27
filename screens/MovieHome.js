@@ -79,18 +79,9 @@ export default function MovieHome(){
               // You can return any component that you like here!
             },
             tabBarActiveTintColor: 'tomato',
-            tabBarInactiveTintColor: 'gray',
+            tabBarInactiveTintColor: 'grey',
           })}
         >
-          {/* <Tab.Screen
-            name="Home"
-            component={Home}
-            options={{
-              title: 'Login Page' ,
-              headerTintColor: 'white',
-              headerStyle: { backgroundColor: 'black',},
-            }}
-          /> */}
           <Tab.Screen
             name="Movies"
             component={Movie}
@@ -132,14 +123,7 @@ export default function MovieHome(){
               headerStyle: { backgroundColor: 'black',},
              }}
           />
-          {/* <Tab.Screen
-            name="MovieInfo" component={MovieInfo}
-                    options={{
-                      title:"",
-                      // headerShown:false,   //will hide the header for that particular screen
-                      
-                    }}
-            /> */}
+
         </Tab.Navigator>
              </>
     );

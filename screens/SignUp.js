@@ -1,5 +1,5 @@
 import React,{useState,useContext} from "react";
-import {View,Text,TextInput,StyleSheet,Button} from 'react-native';
+import {View,Text,TextInput,StyleSheet,Button,Alert} from 'react-native';
 import { AuthContext } from "../src/navigation/authProvider";
 
 export default function SignUp({navigation}){
@@ -8,6 +8,15 @@ export default function SignUp({navigation}){
     const [confirmPassword, setConfirmPassword] = useState();
 
     const {register} = useContext(AuthContext);
+
+    const validate=()=>{
+      if(password!==confirmPassword){
+        return(Alert.alert("Passwords don't match"));
+      }
+      else{
+        register(email,password);
+      }
+    }
 
     return(
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -35,9 +44,9 @@ export default function SignUp({navigation}){
         <Button color="black"
          title="Submit"
          onPress={() => {
-        //    validate();
+           validate();
         //    navigation.goBack();
-        register(email,password)
+        // register(email,password)
           }
          } />
          <Text>{"\t"}</Text>

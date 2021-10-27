@@ -3,11 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { Animated } from 'react-native';
 import Home from '../../screens/Home';
-import Profile from '../../screens/Profile';
 import SignUp from '../../screens/SignUp';
-import MovieHome from '../../screens/MovieHome';
-// import MovieInfo from '../../screens/MovieInfo';
-import MovieInfo from '../../screens/MovieInfo';
 
 const forFade = ({ current, next }) => {
     const opacity = Animated.add(
@@ -47,16 +43,6 @@ export function AuthStack(){
             headerStyle: { backgroundColor: 'black',},
           }}
         />
-        {/* <Auth.Screen
-          name="Profile"
-          component={Profile}
-          options={{
-            headerStyleInterpolator: forFade,
-            title: "Profile Details",
-            headerTintColor: 'white',
-            headerStyle: { backgroundColor: 'black',},
-           }}
-        /> */}
         <Auth.Screen
           name="SignUp"
           component={SignUp}
@@ -67,18 +53,6 @@ export function AuthStack(){
             headerStyle: { backgroundColor: 'black',},
            }}
         />
-        {/* <Auth.Screen name="MovieHome" component={MovieHome}
-          options={{
-            headerShown:false,   //will hide the header for that particular screen
-          }}
-        />
-        <Auth.Screen name="MovieInfo" component={MovieInfo}
-          options={{
-            title:""
-            // headerShown:false,   //will hide the header for that particular screen
-          }}
-        /> */}
-        
       </Auth.Navigator>
     )
 }

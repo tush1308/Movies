@@ -68,6 +68,7 @@ export const AuthProvider = ({children}) => {
                 //   });
                 } catch (e) {
                   console.log(e);
+                  alert(e.error);
                 }
               },
               logout: async () => {

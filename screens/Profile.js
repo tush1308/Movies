@@ -26,7 +26,7 @@ const Calender=()=>{
     let tempDate= new Date(currentDate);
     let fDate=tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
     setText(fDate)
-    console.log(fDate)
+    console.log(fDate);
   };
 
   const showMode = (currentMode) => {
@@ -64,8 +64,8 @@ const Calender=()=>{
   );
 };
 
-const Photo=()=>{
-  const [Pic, SetPic] = React.useState('');
+const Photo=(user)=>{
+  const [Pic, SetPic] = useState('');
   //For Show Toast Messages
   const setToastMessage = message => {
     ToastAndroid.showWithGravity(
@@ -117,7 +117,9 @@ const Photo=()=>{
           underlayColor="rgba(0,0,0,0)">
           <Avatar.Image
             size={200}
-            source={{uri: 'data:image/png;base64,' + Pic}}
+            source={{
+              uri: 'data:image/png;base64,' + Pic
+            }}
           />
         </TouchableHighlight>
       </View>
@@ -147,7 +149,7 @@ export default function Profile({ navigation }) {
   const validate=()=>{
     const reg=/^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
     const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
-    const regName=/^[a-zA-Z]{2,40} [a-zA-Z]{2,40} [a-zA-Z]{2,40}$/;
+    const regName=/^[a-zA-Z]{2,40} [a-zA-Z]{2,40}$/;
     if(email==""||num==""||name==""){
       Alert.alert("Please fill all Details")
     }
@@ -168,10 +170,13 @@ export default function Profile({ navigation }) {
     return (
       <ScrollView style={{paddingVertical:10}}>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Photo/>
+        {/* <Image style={{height:50,width:50}} source={{
+          uri:user.photoURL}}/> */}
+        <Photo user={user}/>
         <TextInput
           style={styles.textinp}
           placeholder='Enter your full name'
+          defaultValue={user.displayName}
           onChangeText={(text)=>setName(text)}
         />
         <Text>{'\t'}</Text>
