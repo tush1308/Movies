@@ -1,14 +1,45 @@
-import React, {useEffect,useState} from 'react';
-import {Text,View,Image,StyleSheet,ActivityIndicator,FlatList,ScrollView} from 'react-native';
+import React, {useContext, useEffect,useState} from 'react';
+import {Text,View,Image,StyleSheet,ActivityIndicator,FlatList,ScrollView,Button} from 'react-native';
 import Video from '../components/video';
-
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { AuthContext } from '../src/navigation/authProvider';
+import firestore from '@react-native-firebase/firestore';
 
 export default function MovieInfo({navigation,route}){
     const [credits, setCredits] = useState(null);
     const [loading, setLoading] = useState(true);
     const [director, setDirector] = useState('');
+    const [favourites,setFavourites]= useState(false);
+    const {user} = useContext(AuthContext);
     const { movie } = route.params;
     // console.log(movie);
+    const Fav=()=>{
+      // favourites?console.log("True"):console.log("False");
+      if(favourites){
+        console.log("True");
+        update();
+      }
+      else if(favourites==false){console.log("False")}
+      return(null)
+    }
+
+    const update= async()=>{
+      firestore()
+      .collection('Favourites')
+      .add({
+        userId: user.uid,
+        favourite:movie.id,
+        title:movie.original_title,
+        img:movie.poster_path,
+        date:movie.release_date,
+      })
+      .then(()=>{
+        console.log('Updated successfully');
+      })
+      .catch((error)=>{
+        console.log("Error occurred",error);
+      });
+    }
 
     const getCredits = async (id) => {
         try {
@@ -79,7 +110,6 @@ export default function MovieInfo({navigation,route}){
 
     useEffect(()=>{
         getCredits(movie.id);
-        // console.log("Helooooooo")
         // console.log(movie.id);
         setLoading(false);
         }, []);
@@ -89,6 +119,18 @@ export default function MovieInfo({navigation,route}){
         <ScrollView>
         <View style={{marginHorizontal:10}}>
           <View>
+          <View style={styles.favourites}>
+        <Text>Add to Favourites</Text>
+        <MaterialIcons 
+        name={favourites?"favorite":"favorite-border"} 
+        size={28}
+        onPress={()=>
+          { 
+            setFavourites(!favourites);
+          }}
+        />
+        <Fav/>
+        </View>
         {/* <Text onPress={()=>{navigation.goBack()}}>{'\n'}{movie.id} and {director}</Text> */}
         <InfoCard movie={movie} director={director} />
         </View>
@@ -118,7 +160,7 @@ const styles = StyleSheet.create({
     infoCard: {
       width:'100%',
       alignItems:'flex-start',
-      marginTop:20,
+      marginTop:5,
       borderRadius:10,
       backgroundColor:'#DEB887',
       paddingBottom:10,
@@ -134,7 +176,7 @@ const styles = StyleSheet.create({
       marginVertical:15,
       borderRadius:10,
       backgroundColor:'#DEB887',
-      paddingVertical:10,
+      paddingVertical:5,
       paddingLeft:15,
       elevation:10,
       shadowColor:'blue',
@@ -182,5 +224,18 @@ const styles = StyleSheet.create({
         paddingLeft:10,
         alignSelf:'center',
         justifyContent:'center',
+      },
+      favourites:{
+        width:'60%',
+        marginVertical:15,
+        paddingHorizontal:15,
+        borderRadius:10,
+        backgroundColor:'#DEB887',
+        paddingVertical:5,
+        elevation:10,
+        shadowColor:'blue',
+        borderWidth:0.5,
+        flexDirection:"row",
+        // justifyContent:'space-between'
       },
   });

@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { useContext,useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 import Profile from './Profile';
 import MovieSearch from './Search';
@@ -9,7 +11,6 @@ import Movie from './Movie'
 import Favourite from './Favourite';
 import LogOutScreen from './LogOut';
 import MovieInfo from './MovieInfo';
-
 
 const forFade = ({ current, next }) => {
     const opacity = Animated.add(
@@ -31,6 +32,7 @@ const forFade = ({ current, next }) => {
 const Tab = createBottomTabNavigator();
 
 export default function MovieHome(){
+
     return (
         <>
         <Tab.Navigator
